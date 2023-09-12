@@ -7,3 +7,28 @@ endpoints:
       - statusCode: 200
         body:
           message: Hello from Mocki!
+
+- path: /price
+  method: get
+  responses:
+    - statusCode: 200
+      body:
+        id: !Fake randomInt
+        date_created: !Fake dateTimeThisYear ["Y-m-d H:i:s"]
+        type: 
+          electricity: !Fake randomElement ["peak", "base"]
+          else: !Fake randomElement ["settlement", "hourly"]
+        product: !Fake randomElement ["electricity", "gas", "co2", "coal", "oil"]
+        name:
+          electricity: "Strom"
+          gas: "Gas"
+          co2: "CO2"
+          coal: "Kohle"
+          oil: "Öl"
+        price_date: !Fake currentDate
+        price_from: !Fake randomTime
+        price_to: !Fake randomTime
+        price_value: !Fake randomFloat 4, 80, 180
+        market: !Fake randomElement ["DE", "F1"]
+
+
