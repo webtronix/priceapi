@@ -29,5 +29,10 @@ endpoints:
           price_to: !Fake randomTime
           price_value: !Fake randomFloat 4, 80, 180
           market: !Fake randomElement ["DE", "F1"]
-
+  - path: /electricity
+    method: get
+    responses:
+      - statusCode: 200
+	body:
+	  id: !Fake firstName
 
